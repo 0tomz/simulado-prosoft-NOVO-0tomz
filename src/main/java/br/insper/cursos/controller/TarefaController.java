@@ -19,16 +19,11 @@ public class TarefaController {
     private TarefaService tarefaService;
 
     @GetMapping("/tarefa")
-    public List<Tarefa> listar(@RequestParam(required = false) String titulo) {
-        return tarefaService.listar(titulo);
-    }
-
-    @GetMapping
     public Collection<Tarefa> getTarefa() {
         return tarefaService.listarTodos();
     }
 
-    @PostMapping("/tarefa")
+    @PostMapping
     public ResponseEntity<Tarefa> criar(@RequestBody TarefaDto dto) {
         Tarefa tarefa = tarefaService.criar(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(tarefa);

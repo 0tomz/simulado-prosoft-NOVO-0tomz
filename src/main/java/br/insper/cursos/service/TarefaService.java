@@ -9,10 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Service
 public class TarefaService {
+
+    private HashMap<Long, Tarefa> tarefa = new HashMap<>();
 
     @Autowired
     private TarefaRepository tarefaRepository;
@@ -27,6 +30,9 @@ public class TarefaService {
     public List<Tarefa> listarTodos() {
         return tarefaRepository.findAll();
     }
+
+
+
 
 
     public Tarefa criar(TarefaDto dto) {
