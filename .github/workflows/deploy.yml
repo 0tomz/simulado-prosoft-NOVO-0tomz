@@ -63,9 +63,8 @@ jobs:
             docker stop cursos || true
             docker rm --force cursos || true
             docker run -d -p 8080:8080 --network rede --name cursos \
-              -e DB_HOST=${{ secrets.DB_HOST }} \
-              -e DB_PORT=${{ secrets.DB_PORT }} \
-              -e DB_NAME=${{ secrets.DB_NAME }} \
-              -e DB_USER=${{ secrets.DB_USER }} \
-              -e DB_PASSWORD=${{ secrets.DB_PASSWORD }} \
+              -e SPRING_DATASOURCE_URL=jdbc:postgresql://${{ secrets.DB_HOST }}:${{ secrets.DB_PORT }}/${{ secrets.DB_NAME }} \
+              -e SPRING_DATASOURCE_USERNAME=${{ secrets.DB_USER }} \
+              -e SPRING_DATASOURCE_PASSWORD=${{ secrets.DB_PASSWORD }} \
+              -e SPRING_JPA_HIBERNATE_DDL_AUTO=update \
               ${{ secrets.DOCKERHUB_USERNAME }}/cursos-ci:${{ github.sha }}
