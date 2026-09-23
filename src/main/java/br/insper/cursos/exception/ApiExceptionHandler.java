@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class ApiExceptionHandler {
 
-    @ExceptionHandler(CursoNaoEncontradoException.class)
-    public ResponseEntity<String> handleNaoEncontrado(CursoNaoEncontradoException ex) {
+    @ExceptionHandler(TarefaNaoEncontradoException.class)
+    public ResponseEntity<String> handleNaoEncontrado(TarefaNaoEncontradoException ex) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
     }
 
-    @ExceptionHandler(ValidacaoCursoException.class)
-    public ResponseEntity<String> handleValidacao(ValidacaoCursoException ex) {
+    @ExceptionHandler(ValidacaoTarefaException.class)
+    public ResponseEntity<String> handleValidacao(ValidacaoTarefaException ex) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
     }
 }

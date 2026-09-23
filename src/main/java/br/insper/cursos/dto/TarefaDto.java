@@ -3,11 +3,10 @@ package br.insper.cursos.dto;
 import lombok.Data;
 
 @Data
-public class CursoDto {
+public class TarefaDto {
 
-    private String nome;
+    private String titulo;
 
     private String descricao;
 
-    private Integer cargaHoraria;
 }
